@@ -13,7 +13,8 @@ const [date, setDate] = useState("");
 useEffect(() => {
 axios
 .get(
-`https://api.nasa.gov/planetary/apod?api_key=uXWS6dOmWiquWKstJIlqpQ5dsFMlVWxbW3nUG1IE&date=${date}`
+`https://api.nasa.gov/planetary/apod?api_key=AmFnrPrfDDI2HN0uoZFFNsTzGqzCZCgZxuJason5&date=${date}`
+
 )
 .then(res => setData(res.data))
 
