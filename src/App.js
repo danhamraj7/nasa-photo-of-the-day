@@ -18,7 +18,7 @@ axios
 .then(res => setData(res.data))
 
 .catch(err => console.log(err));
-}, []);
+}, [date]);
 
 const changeHandler = e => {
 setDate(e.target.value);
@@ -28,9 +28,9 @@ console.log(data);
 if (data) {
 return (
 <div className = "App">
+
 <form className = "form">
 <label>Select a date to display picture:</label>
-
 <input
 className = "input"
 name = "date"
@@ -38,6 +38,7 @@ type = "date"
 value = {date}
 onChange = {changeHandler}/>
 </form>
+
 <div className = "header-content">
 < Header title ={data.title}date ={data.date}/>
 </div>
