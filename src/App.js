@@ -7,48 +7,50 @@ import Header from "../src/components/header";
 import Paragraph from "../src/components/paragraph";
 
 function App() {
-  const [data, setData] = useState("");
-  const [date, setDate] = useState("");
+const [data, setData] = useState("");
+const [date, setDate] = useState("");
 
-  useEffect(() => {
-   axios
-  .get(
-    `https://api.nasa.gov/planetary/apod?api_key=uXWS6dOmWiquWKstJIlqpQ5dsFMlVWxbW3nUG1IE&date=${date}`
-  )
+useEffect(() => {
+axios
+.get(
+`https://api.nasa.gov/planetary/apod?api_key=uXWS6dOmWiquWKstJIlqpQ5dsFMlVWxbW3nUG1IE&date=${date}`
+)
 .then(res => setData(res.data))
+
 .catch(err => console.log(err));
-}, [date]);
+}, []);
 
 const changeHandler = e => {
 setDate(e.target.value);
 };
 
- console.log(data);
- if (data) {
+console.log(data);
+if (data) {
 return (
-  <div className = "App">
-  <form className = "form">
-  <label>Select a date to display picture:</label>
+<div className = "App">
+<form className = "form">
+<label>Select a date to display picture:</label>
 
-  <input
-  className = "input"
-  name = "date"
-  type = "date"
-  value = {date}
-  onChange = {changeHandler}/>
-  </form>
-  <div className = "header-content">
-  < Header title ={data.title}date ={data.date}/>
-  </div>
-   <div className = "main-content">
-   <Image src = {data.url}note = "APOD picture"/>
-   <Paragraph para = {data.explanation}/>
-    </div>
-     </div>
-      );
-      } else {
-    return <Spinner/>;
-      }
-    }
+<input
+className = "input"
+name = "date"
+type = "date"
+value = {date}
+onChange = {changeHandler}/>
+</form>
+<div className = "header-content">
+< Header title ={data.title}date ={data.date}/>
+</div>
+<div className = "main-content">
+<Image src = {data.url}note = "APOD picture"/>
+<Paragraph para = {data.explanation}/>
+</div>
+</div>
+);
 
-    export default App;
+} else {
+return <Spinner/>;
+}
+}
+
+export default App;
